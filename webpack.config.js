@@ -8,7 +8,7 @@ module.exports = (env) => {
     return {
         entry: './src/app.js',
         output: {
-            path: path.join(__dirname, 'public'), //__dirname gets the path and we join it with the folder public
+            path: path.join(__dirname, 'public', 'dist'), //__dirname gets the path and we join it with the folder public
             filename: 'bundle.js'
         },
         module: {
@@ -42,7 +42,8 @@ module.exports = (env) => {
         devtool: isProduction ? 'source-map' : 'inline-source-map',
         devServer: {
             contentBase: path.join(__dirname, 'public'), //__dirname gets the path and we join it with the folder public
-            historyApiFallback: true //this tells the server to serve index.html to all routes
+            historyApiFallback: true, //this tells the server to serve index.html to all routes
+            publicPath: '/dist/'
         }
     };
 };
